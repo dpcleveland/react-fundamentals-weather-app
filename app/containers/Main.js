@@ -1,4 +1,5 @@
 var React = require('react');
+var GetCityContainer = require('./GetCityContainer');
 
 var styles = {
   container: {
@@ -12,7 +13,8 @@ var Main = React.createClass({
     return (
       <div style={styles.container}>
         <header>
-          <h1>Main.js Header</h1>
+          <h1>Weather App</h1>
+          <GetCityContainer/>
         </header>
         {this.props.children}
       </div>
