@@ -5,9 +5,8 @@ var GetCityContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function (props) {
+  getInitialState: function () {
     return {
-      direction: this.props.direction,
       city: ''
     }
   },
@@ -32,7 +31,7 @@ var GetCityContainer = React.createClass({
         onSubmitCity={this.handleSubmitCity}
         onUpdateCity={this.handleUpdateCity}
         city={this.state.city}
-        direction={this.state.direction} />
+        direction={this.props.direction} />
     )
 
   }

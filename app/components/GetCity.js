@@ -21,10 +21,7 @@ var styles = {
     marginLeft: 'auto',
     marginRight: 'auto',
     display: 'inline-block',
-
-    cityButton: {
-      margin: 30,
-    },
+    width: 30,
 
   }
 };

@@ -9,22 +9,21 @@ var styles = {
 };
 
 var Main = React.createClass({
-  getInitialState: function () {
-    return {
-      direction: 'horizontal'
-    }
-  },
   render: function() {
     return (
       <div style={styles.container}>
         <header>
           <h1>Weather App</h1>
-          <GetCityContainer direction={this.state.direction}/>
+          <GetCityContainer direction={this.props.direction}/>
         </header>
         {this.props.children}
       </div>
     )
   }
 });
+
+Main.defaultProps = {
+  direction: 'horizontal'
+};
 
 module.exports = Main;
