@@ -4,14 +4,10 @@ var Home = require('../components/Home');
 var HomeContainer = React.createClass({
   render: function () {
     return (
-      <Home direction={this.props.direction} />
+      <Home />
     )
 
   }
 });
-
-HomeContainer.defaultProps = {
-  direction: 'vertical'
-};
 
 module.exports = HomeContainer;

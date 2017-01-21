@@ -10,9 +10,9 @@ var HomeContainer = require("../containers/HomeContainer");
 
 var routes = (
   <Router history={hashHistory}>
-  <Route path='/' component={Main}>
-    <IndexRoute component={HomeContainer} />
-  </Route>
+    <Route path='/' component={Main}>
+      <IndexRoute component={HomeContainer} />
+    </Route>
   </Router>
 );
 
