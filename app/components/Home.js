@@ -19,11 +19,13 @@ var styles = {
   },
 };
 
+// TODO Change direction prop to state instead of static
+
 function Home (props) {
   return (
     <div style={styles.container}>
       <h1 style={styles.header}>Enter a City and State</h1>
-      <GetCityContainer />
+      <GetCityContainer direction="vertical" />
     </div>
   )
 }
