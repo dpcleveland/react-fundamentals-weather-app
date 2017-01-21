@@ -5,9 +5,9 @@ var GetCityContainer = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
-  getInitialState: function () {
+  getInitialState: function (props) {
     return {
-      direction: 'horizontal',
+      direction: this.props.direction,
       city: ''
     }
   },
