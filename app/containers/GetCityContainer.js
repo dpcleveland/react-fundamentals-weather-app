@@ -1,6 +1,8 @@
 var React = require('react');
 var GetCity = require('../components/GetCity');
 var PropTypes = React.PropTypes;
+var currentWeather = require('../helpers/API').currentWeather;
+var fiveDayForecast = require('../helpers/API').fiveDayForecast;
 
 var GetCityContainer = React.createClass({
   contextTypes: {
@@ -34,7 +36,10 @@ var GetCityContainer = React.createClass({
       city: ''
     });
     console.log('handleSubmitCity after setState:', this.state.city)
-    this.context.router.push('/forecast/' + this.state.city);
+    // this.context.router.push('/forecast/' + this.state.city);
+    currentWeather(this.state.city);
+    fiveDayForecast(this.state.city);
+
   },
   render: function () {
     return (
