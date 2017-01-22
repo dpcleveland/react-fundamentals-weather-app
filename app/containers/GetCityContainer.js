@@ -36,7 +36,7 @@ var GetCityContainer = React.createClass({
       city: ''
     });
     console.log('handleSubmitCity after setState:', this.state.city)
-    // this.context.router.push('/forecast/' + this.state.city);
+    this.context.router.push('/forecast/' + this.state.city);
     currentWeather(this.state.city);
     fiveDayForecast(this.state.city);
 
