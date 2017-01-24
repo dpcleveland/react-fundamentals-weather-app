@@ -1,8 +1,10 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
+var Loading = require('./Loading');
 
 function getStyles () {
   return {
+    marginTop: 20,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -13,20 +15,17 @@ function getStyles () {
 
 function puke (props) {
   return (
-    <p>Forecast component</p>
+    <p>{JSON.stringify(props, null, '')}</p>
   )
 }
 
 function Forecast (props) {
-  return (
-    <div style={getStyles()}>
-      {puke(props)}
-    </div>
-  )
+  console.log(props);
+  return props.isLoading === true
+    ? <Loading speed={800} text="Loading" />
+    : <div style={getStyles()}>
+        {puke(props.forecastData)}
+      </div>
 }
-
-Forecast.propTypes = {
-
-};
 
 module.exports = Forecast;
