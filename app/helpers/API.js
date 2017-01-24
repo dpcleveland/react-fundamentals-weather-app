@@ -7,24 +7,18 @@ var baseURL = 'http://api.openweathermap.org/data/2.5/';
 function getCurrentWeather (city) {
   return axios.get(baseURL + 'weather?q=' + city + '&type=accurate&APPID=' + key)
     .then(function (currentWeatherData) {
-      console.log(currentWeatherData.data)
+      return currentWeatherData.data
     });
 }
 
 function getFiveDays (city) {
   return axios.get(baseURL + 'forecast/daily?q=' + city + '&type=accurate&APPID=' + key + '&cnt=5')
     .then(function (fiveDaysData) {
-      console.log(fiveDaysData.data)
+      return fiveDaysData.data
     });
 }
 
-var API = {
-  currentWeather: function (city) {
-    getCurrentWeather(city);
-  },
-  fiveDayForecast: function (city) {
-    getFiveDays(city);
-  }
+module.exports = {
+  getCurrentWeather: getCurrentWeather,
+  getFiveDays: getFiveDays
 };
-
-module.exports = API;
