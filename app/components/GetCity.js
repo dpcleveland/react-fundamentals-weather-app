@@ -3,11 +3,12 @@ var PropTypes = React.PropTypes;
 
 function Button (props) {
   return (
-    <button type='button'
-            style={{margin: 10}}
-            className='btn btn-success'
-            onClick={props.onSubmitCity}>
-              {props.children}
+    <button
+      type='button'
+      style={{margin: 10}}
+      className='btn btn-success'
+      onClick={props.onSubmitCity}>
+        {props.children}
     </button>
   )
 }

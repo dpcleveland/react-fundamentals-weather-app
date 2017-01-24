@@ -1,22 +1,18 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 var Loading = require('./Loading');
+var DayContainer = require('../containers/DayContainer');
 
 function getStyles () {
   return {
-    marginTop: 20,
+    marginTop: 30,
+    marginRight: 20,
+    marginBottom: 30,
+    marginLeft: 20,
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    maxWidth: 900,
-    alignSelf: 'right'
   }
-}
-
-function puke (props) {
-  return (
-    <p>{JSON.stringify(props, null, '')}</p>
-  )
 }
 
 function Forecast (props) {
@@ -24,8 +20,18 @@ function Forecast (props) {
   return props.isLoading === true
     ? <Loading speed={800} text="Loading" />
     : <div style={getStyles()}>
-        {puke(props.forecastData)}
-      </div>
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+        <DayContainer forecastData={props.forecastData} />
+
+
+    </div>
 }
 
 module.exports = Forecast;
