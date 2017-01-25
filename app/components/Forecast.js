@@ -2,6 +2,7 @@ var React = require('react');
 var PropTypes = React.PropTypes;
 var Loading = require('./Loading');
 var DayContainer = require('../containers/DayContainer');
+var convertDay = require('../helpers/convertDay').convertDay;
 
 function getStyles () {
   return {
@@ -17,18 +18,21 @@ function getStyles () {
 
 function Forecast (props) {
   console.log(props);
+
   return props.isLoading === true
     ? <Loading speed={800} text="Loading" />
     : <div style={getStyles()}>
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
-        <DayContainer forecastData={props.forecastData} />
+        <ul>
+          {props.forecastData.list.map(item => (
+            <li key={item.dt}>{convertDay(item.dt)}</li>
+          ))}
+        </ul>
+
+
+        {/*<DayContainer forecastData={props.forecastData} />*/}
+        {/*<DayContainer forecastData={props.forecastData} />*/}
+        {/*<DayContainer forecastData={props.forecastData} />*/}
+
 
 
     </div>
