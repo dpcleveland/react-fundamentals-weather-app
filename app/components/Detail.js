@@ -11,7 +11,7 @@ var styles = {
     margin: '0 auto',
     textAlign: 'center',
   }
-}
+};
 
 function Detail (props) {
   return (

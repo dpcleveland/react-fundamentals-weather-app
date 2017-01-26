@@ -6,6 +6,7 @@ var styles = {
   container: {
     backgroundSize: 'cover',
     backgroundImage: "url('app/images/pattern.svg')",
+    filter: 'hue-rotate(190deg) saturate(1)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -18,7 +19,7 @@ var styles = {
     color: '#fff',
     fontWeight: 100,
   },
-}
+};
 
 function Home (props) {
   return (

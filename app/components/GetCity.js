@@ -5,7 +5,7 @@ function Button (props) {
   return (
     <button type='button'
             style={{margin: 10}}
-            className='btn btn-success'
+            className='btn btn-info'
             onClick={props.onSubmitCity}>
       {props.children}
     </button>
@@ -17,7 +17,7 @@ function InputField (props) {
     <input
       className='form-control'
       onChange={props.onUpdateCity}
-      placeholder='St. George, Utah'
+      placeholder='Austin, Texas'
       type='text'
       value={props.city} />
   )

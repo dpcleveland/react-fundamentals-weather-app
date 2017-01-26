@@ -20,7 +20,7 @@ var GetCityContainer = React.createClass({
     }
   },
   handleSubmitCity: function (e) {
-    e.preventDefault()
+    e.preventDefault();
     this.context.router.push('/forecast/' + this.state.city)
   },
   handleUpdateCity: function (e) {

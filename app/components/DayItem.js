@@ -19,7 +19,7 @@ var styles = {
   weather: {
     height: 130
   }
-}
+};
 
 function DayItem (props) {
   var date = getDate(props.day.dt);

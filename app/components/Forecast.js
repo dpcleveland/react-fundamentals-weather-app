@@ -27,7 +27,7 @@ var styles = {
     marginTop: 50,
     marginBottom: 30,
   }
-}
+};
 
 function ForecastUI (props) {
   return (

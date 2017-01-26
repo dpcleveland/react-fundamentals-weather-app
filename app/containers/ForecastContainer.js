@@ -1,6 +1,6 @@
 var React = require('react');
 var Forecast = require('../components/Forecast');
-var getForcast = require('../helpers/api').getForcast;
+var getForecast = require('../helpers/api').getForecast;
 
 var ForecastContainer = React.createClass({
   contextTypes: {
@@ -19,7 +19,7 @@ var ForecastContainer = React.createClass({
     this.makeRequest(nextProps.routeParams.city)
   },
   makeRequest: function (city) {
-    getForcast(city)
+    getForecast(city)
       .then(function (forecastData) {
         this.setState({
           isLoading: false,
