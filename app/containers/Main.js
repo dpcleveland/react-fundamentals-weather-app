@@ -13,6 +13,7 @@ var styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'rgba(252, 90, 44, 0.89)',
+    filter: 'hue-rotate(190deg) saturate(1)',
     color: '#fff',
     padding: 5,
   },
