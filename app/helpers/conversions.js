@@ -1,8 +1,16 @@
 function unixToDayOfWeek (dt) {
 
-  let a = new Date(dt*1000);
+  let date = new Date(dt*1000);
+
   let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  return days[a.getDay()];
+  let dayOfWeek = days[date.getDay()];
+
+  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let month = months[date.getMonth()];
+
+  let day = date.getDate();
+
+  return dayOfWeek + ', ' + month + ' ' + day;
 
 }
 
