@@ -3,6 +3,7 @@ var PropTypes = React.PropTypes;
 var Loading = require('./Loading');
 var DayContainer = require('../containers/DayContainer');
 var unixToDayOfWeek = require('../helpers/conversions').unixToDayOfWeek;
+var weatherIdToIcon = require('../helpers/conversions').weatherIdToIcon;
 
 function getStyles () {
   return {
@@ -24,7 +25,7 @@ function Forecast (props) {
     : <div style={getStyles()}>
         <ul>
           {props.forecastData.list.map(item => (
-            <li key={item.dt}>Day: {unixToDayOfWeek(item.dt)} Icon: {item.weather[0].icon}</li>
+            <li key={item.dt}>Icon: <img src={weatherIdToIcon(item.weather[0].icon)} /> Day: {unixToDayOfWeek(item.dt)}</li>
           ))}
         </ul>
 

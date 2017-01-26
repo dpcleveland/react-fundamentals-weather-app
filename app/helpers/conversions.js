@@ -6,6 +6,15 @@ function unixToDayOfWeek (dt) {
 
 }
 
+function weatherIdToIcon (id) {
+  var imgRoot= 'app/images/weather-icons/';
+  var imgEnd= '.svg';
+
+  return (imgRoot + id + imgEnd);
+
+}
+
 module.exports = {
-  unixToDayOfWeek: unixToDayOfWeek
+  unixToDayOfWeek: unixToDayOfWeek,
+  weatherIdToIcon: weatherIdToIcon
 };
