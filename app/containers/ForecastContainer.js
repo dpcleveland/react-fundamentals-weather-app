@@ -4,6 +4,7 @@ var getFiveDays = require('../helpers/API').getFiveDays;
 
 
 var ForecastContainer = React.createClass({
+
   getInitialState: function () {
     return {
       isLoading: true,
