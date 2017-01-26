@@ -1,7 +1,6 @@
 var React = require('react');
-var GetCity = require('../components/GetCity');
 var PropTypes = React.PropTypes;
-var getFiveDays = require('../helpers/API').getFiveDays;
+var GetCity = require('../components/GetCity');
 
 var GetCityContainer = React.createClass({
   contextTypes: {
@@ -20,34 +19,23 @@ var GetCityContainer = React.createClass({
       city: ''
     }
   },
-  handleUpdateCity: function (event) {
-    this.setState({
-      city: event.target.value
-    });
-    console.log('handleUpdateCity after setState:', this.state.city)
-
+  handleSubmitCity: function (e) {
+    e.preventDefault()
+    this.context.router.push('/forecast/' + this.state.city)
   },
-  handleSubmitCity: function (event) {
-    event.preventDefault();
-    console.log('handleSubmitCity before setState:', this.state.city);
-    var city = this.state.city;
+  handleUpdateCity: function (e) {
     this.setState({
-      city: ''
-    });
-    console.log('handleSubmitCity after setState:', this.state.city);
-    this.context.router.push('/forecast/' + this.state.city);
-    getFiveDays(this.state.city);
-
+      city: e.target.value
+    })
   },
   render: function () {
     return (
       <GetCity
+        direction={this.props.direction}
         onSubmitCity={this.handleSubmitCity}
         onUpdateCity={this.handleUpdateCity}
-        city={this.state.city}
-        direction={this.props.direction} />
+        city={this.state.city} />
     )
-
   }
 });
 

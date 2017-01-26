@@ -3,12 +3,11 @@ var PropTypes = React.PropTypes;
 
 function Button (props) {
   return (
-    <button
-      type='button'
-      style={{margin: 10}}
-      className='btn btn-info'
-      onClick={props.onSubmitCity}>
-        {props.children}
+    <button type='button'
+            style={{margin: 10}}
+            className='btn btn-success'
+            onClick={props.onSubmitCity}>
+      {props.children}
     </button>
   )
 }
@@ -18,7 +17,7 @@ function InputField (props) {
     <input
       className='form-control'
       onChange={props.onUpdateCity}
-      placeholder='Austin, Texas'
+      placeholder='St. George, Utah'
       type='text'
       value={props.city} />
   )
@@ -53,7 +52,7 @@ GetCity.propTypes = {
   direction: PropTypes.string,
   onSubmitCity: PropTypes.func.isRequired,
   onUpdateCity: PropTypes.func.isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired
 }
 
 module.exports = GetCity;

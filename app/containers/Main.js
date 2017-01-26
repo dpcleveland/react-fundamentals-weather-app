@@ -1,6 +1,4 @@
 var React = require('react');
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
 var GetCityContainer = require('./GetCityContainer');
 
 var styles = {
@@ -8,39 +6,28 @@ var styles = {
     width: '100%',
     height: '92%'
   },
-  header: {
+  header :{
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     background: 'rgba(252, 90, 44, 0.89)',
-    filter: 'hue-rotate(190deg) saturate(1)',
     color: '#fff',
     padding: 5,
-  },
-  link: {
-    color: '#fff',
-    textDecoration: 'none'
-  },
-};
+  }
+}
 
 var Main = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <div style={styles.container}>
-        <header style={styles.header}>
-          <Link to='/' style={styles.link}>
-            <h1 style={{margin: 0}}>Weather App</h1>
-          </Link>
-          <GetCityContainer direction={this.props.direction}/>
-        </header>
+        <div style={styles.header}>
+          <h2 style={{margin: 0}}>Clever Title</h2>
+          <GetCityContainer direction='row' />
+        </div>
         {this.props.children}
       </div>
     )
   }
-});
-
-Main.defaultProps = {
-  direction: 'row'
-};
+})
 
 module.exports = Main;

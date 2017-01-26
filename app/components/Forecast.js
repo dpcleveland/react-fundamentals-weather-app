@@ -1,21 +1,8 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var Loading = require('./Loading');
-var DayContainer = require('../containers/DayContainer');
-var unixToDayOfWeek = require('../helpers/conversions').unixToDayOfWeek;
-var weatherIdToIcon = require('../helpers/conversions').weatherIdToIcon;
-
-function styles () {
-  return {
-    marginTop: 30,
-    marginRight: 20,
-    marginBottom: 30,
-    marginLeft: 20,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  }
-}
+var utils = require('../helpers/utils');
+var getDate = utils.getDate;
+var DayItem = require('./DayItem');
 
 var styles = {
   container: {
@@ -25,45 +12,57 @@ var styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxWidth: 1200,
+    margin: '50px auto'
+  },
+  subheader: {
+    fontSize: 30,
+    color: '#333',
+    fontWeight: 100
+  },
+  header: {
+    fontSize: 65,
+    color: '#333',
+    fontWeight: 100,
+    textAlign: 'center',
     marginTop: 50,
-    marginBottom: 50,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-  },
-  dayContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    margin: 55,
-  },
+    marginBottom: 30,
+  }
+}
 
-
-};
-
-function Forecast (props) {
-  console.log(props);
-
-  return props.isLoading === true
-    ? <Loading speed={800} text="Loading" />
-    : <div style={{textAlign: 'center', color:'#333'}}>
-        <h1 style={{fontSize: 65, fontWeight: 100, marginTop: 50, marginBottom: 30}}>{props.city}</h1>
-        <p style={{fontSize: 30, fontWeight:100}}>Select a day</p>
-        <div style={styles.container}>
-
-          {props.forecastData.list.map(item => (
-            <div key={item.dt} style={styles.dayContainer}>
-              <img style={{height:130}} src={weatherIdToIcon(item.weather[0].icon)} alt="Weather" />
-              <h2 style={{fontSize:30, fontWeight:100,}}>{unixToDayOfWeek(item.dt)}</h2>
-            </div>
-          ))}
-
-        {/*<DayContainer forecastData={props.forecastData} />*/}
-        {/*<DayContainer forecastData={props.forecastData} />*/}
-        {/*<DayContainer forecastData={props.forecastData} />*/}
-
+function ForecastUI (props) {
+  return (
+    <div style={{textAlign: 'center'}}>
+      <h1 style={styles.header}>{props.city}</h1>
+      <p style={styles.subheader}>Select a day</p>
+      <div style={styles.container}>
+        {props.forecast.list.map(function (listItem) {
+          return <DayItem key={listItem.dt} day={listItem} handleClick={props.handleClick.bind(null, listItem)} />
+        })}
       </div>
     </div>
+  )
+}
+
+function Forecast (props) {
+  return (
+    <div>
+      {
+        props.isLoading === true
+          ? <h1 style={styles.header}> Loading </h1>
+          : <ForecastUI
+            city={props.city}
+            forecast={props.forecastData}
+            handleClick={props.handleClick} />
+      }
+    </div>
+  )
+}
+
+Forecast.propTypes = {
+  city: PropTypes.string.isRequired,
+  forecastData: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired
 }
 
 module.exports = Forecast;

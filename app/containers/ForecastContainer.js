@@ -1,39 +1,48 @@
 var React = require('react');
 var Forecast = require('../components/Forecast');
-var getFiveDays = require('../helpers/API').getFiveDays;
-
+var getForcast = require('../helpers/api').getForcast;
 
 var ForecastContainer = React.createClass({
-
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   getInitialState: function () {
     return {
       isLoading: true,
-      forecastData: {},
+      forecastData: {}
     }
   },
   componentDidMount: function () {
-    this.makeDataRequest(this.props.routeParams.city)
+    this.makeRequest(this.props.routeParams.city)
   },
   componentWillReceiveProps: function (nextProps) {
-    this.makeDataRequest(nextProps.routeParams.city)
+    this.makeRequest(nextProps.routeParams.city)
   },
-  makeDataRequest: function (city) {
-    getFiveDays(city)
-      .then(function (fiveDaysData) {
+  makeRequest: function (city) {
+    getForcast(city)
+      .then(function (forecastData) {
         this.setState({
           isLoading: false,
-          fiveDaysData: fiveDaysData
+          forecastData: forecastData
         });
       }.bind(this));
+  },
+  handleClick: function (weather) {
+    this.context.router.push({
+      pathname: '/detail/' + this.props.routeParams.city,
+      state: {
+        weather: weather
+      }
+    })
   },
   render: function () {
     return (
       <Forecast
-        isLoading={this.state.isLoading}
         city={this.props.routeParams.city}
-        forecastData={this.state.fiveDaysData} />
+        isLoading={this.state.isLoading}
+        handleClick={this.handleClick}
+        forecastData={this.state.forecastData} />
     )
-
   }
 });
 
